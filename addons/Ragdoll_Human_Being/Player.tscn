@@ -1,0 +1,241 @@
+[gd_scene format=3 uid="uid://d3fcvwxsuj38o"]
+
+[ext_resource type="Script" uid="uid://cdmfx0isisqaw" path="res://addons/Ragdoll_Human_Being/Player_Torso.gd" id="1_0xmpi"]
+[ext_resource type="Script" uid="uid://dvspbr7e73dht" path="res://addons/Ragdoll_Human_Being/Player_Legs.gd" id="2_0xmpi"]
+
+[sub_resource type="TextMesh" id="TextMesh_uj04i"]
+text = "PLAYER"
+
+[sub_resource type="PrismMesh" id="PrismMesh_p5viw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uj04i"]
+radius = 8.776
+height = 80.969
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jc63w"]
+radius = 9.0
+height = 82.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7dm0k"]
+radius = 17.89
+height = 35.78
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0xm2m"]
+radius = 17.869999
+height = 35.739998
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h2yge"]
+radius = 6.075
+height = 40.072
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1bvp3"]
+radius = 6.0
+height = 40.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ig7tw"]
+radius = 6.075
+height = 46.747
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2yge"]
+radius = 6.0
+height = 46.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0udnx"]
+radius = 5.985
+height = 64.953
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2uf65"]
+radius = 6.0
+
+[node name="Player" type="Node2D" unique_id=1487471039]
+rotation = -6.2831855
+
+[node name="torso" type="RigidBody2D" parent="." unique_id=386278958]
+collision_layer = 2
+script = ExtResource("1_0xmpi")
+
+[node name="text" type="MeshInstance2D" parent="torso" unique_id=1305689277]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1.4574172e-05, -91.11)
+scale = Vector2(72.615, -72.4)
+mesh = SubResource("TextMesh_uj04i")
+
+[node name="text2" type="MeshInstance2D" parent="torso" unique_id=1231283416]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1.4512181e-05, -83)
+scale = Vector2(4.895, 4.895)
+mesh = SubResource("PrismMesh_p5viw")
+
+[node name="torso_mesh" type="MeshInstance2D" parent="torso" unique_id=504711342]
+mesh = SubResource("CapsuleMesh_uj04i")
+
+[node name="torso_colision" type="CollisionShape2D" parent="torso" unique_id=390056802]
+shape = SubResource("CapsuleShape2D_jc63w")
+
+[node name="head_mesh" type="MeshInstance2D" parent="torso" unique_id=1856664144]
+position = Vector2(-0.109985426, -61.110004)
+mesh = SubResource("CapsuleMesh_7dm0k")
+
+[node name="head_colision" type="CollisionShape2D" parent="torso" unique_id=276903947]
+position = Vector2(-0.109985426, -61.110004)
+shape = SubResource("CapsuleShape2D_0xm2m")
+
+[node name="RayCast2D" type="RayCast2D" parent="torso" unique_id=447709892]
+target_position = Vector2(0, 140)
+
+[node name="Camera2D" type="Camera2D" parent="torso" unique_id=1557422413]
+
+[node name="arm" type="Node2D" parent="." unique_id=701604696]
+
+[node name="left" type="Node2D" parent="arm" unique_id=12607545]
+position = Vector2(-9, -30)
+rotation = 1.5707964
+
+[node name="left_arm" type="RigidBody2D" parent="arm/left" unique_id=478656415]
+position = Vector2(0, 16)
+collision_layer = 4
+
+[node name="torso_mesh" type="MeshInstance2D" parent="arm/left/left_arm" unique_id=1178677589]
+mesh = SubResource("CapsuleMesh_h2yge")
+
+[node name="torso_colision" type="CollisionShape2D" parent="arm/left/left_arm" unique_id=991432399]
+shape = SubResource("CapsuleShape2D_1bvp3")
+
+[node name="left_arm2" type="RigidBody2D" parent="arm/left" unique_id=1702661452]
+position = Vector2(0, 47)
+collision_layer = 8
+
+[node name="torso_mesh" type="MeshInstance2D" parent="arm/left/left_arm2" unique_id=119693919]
+position = Vector2(0, 3)
+mesh = SubResource("CapsuleMesh_ig7tw")
+
+[node name="torso_colision" type="CollisionShape2D" parent="arm/left/left_arm2" unique_id=2071352729]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_h2yge")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="arm/left" unique_id=1056881059]
+position = Vector2(0, 31)
+node_a = NodePath("../left_arm")
+node_b = NodePath("../left_arm2")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="arm/left" unique_id=250803701]
+node_a = NodePath("../../../torso")
+node_b = NodePath("../left_arm")
+
+[node name="right" type="Node2D" parent="arm" unique_id=1799676747]
+position = Vector2(9, -30)
+rotation = -1.5707964
+
+[node name="right_arm" type="RigidBody2D" parent="arm/right" unique_id=1242537993]
+position = Vector2(0, 16)
+collision_layer = 4
+
+[node name="torso_mesh" type="MeshInstance2D" parent="arm/right/right_arm" unique_id=361500814]
+mesh = SubResource("CapsuleMesh_h2yge")
+
+[node name="torso_colision" type="CollisionShape2D" parent="arm/right/right_arm" unique_id=1954623009]
+shape = SubResource("CapsuleShape2D_1bvp3")
+
+[node name="right_arm2" type="RigidBody2D" parent="arm/right" unique_id=631397418]
+position = Vector2(0, 47)
+collision_layer = 8
+
+[node name="torso_mesh" type="MeshInstance2D" parent="arm/right/right_arm2" unique_id=5790620]
+position = Vector2(0, 3)
+mesh = SubResource("CapsuleMesh_ig7tw")
+
+[node name="torso_colision" type="CollisionShape2D" parent="arm/right/right_arm2" unique_id=118812107]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_h2yge")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="arm/right" unique_id=748936238]
+position = Vector2(0, 31)
+node_a = NodePath("../right_arm")
+node_b = NodePath("../right_arm2")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="arm/right" unique_id=665058703]
+node_a = NodePath("../../../torso")
+node_b = NodePath("../right_arm")
+
+[node name="leg" type="Node2D" parent="." unique_id=1183345423]
+
+[node name="left" type="Node2D" parent="leg" unique_id=1681507918]
+position = Vector2(-5, 48)
+scale = Vector2(0.7, 1)
+
+[node name="left_leg" type="RigidBody2D" parent="leg/left" unique_id=1628385882 node_paths=PackedStringArray("lower_leg")]
+position = Vector2(0, 1)
+collision_layer = 16
+script = ExtResource("2_0xmpi")
+lower_leg = NodePath("../left_leg2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="leg/left/left_leg" unique_id=1658543557]
+position = Vector2(0, -1.4305115e-06)
+scale = Vector2(1, 0.4618724)
+mesh = SubResource("CapsuleMesh_0udnx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leg/left/left_leg" unique_id=1633175361]
+shape = SubResource("CapsuleShape2D_2uf65")
+
+[node name="left_leg2" type="RigidBody2D" parent="leg/left" unique_id=1916134269]
+position = Vector2(0, 27)
+collision_layer = 32
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="leg/left/left_leg2" unique_id=918483949]
+position = Vector2(0, -1.4305115e-06)
+scale = Vector2(1, 0.4618724)
+mesh = SubResource("CapsuleMesh_0udnx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leg/left/left_leg2" unique_id=705892052]
+shape = SubResource("CapsuleShape2D_2uf65")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="leg/left" unique_id=1914742829]
+position = Vector2(0, -14)
+node_a = NodePath("../../../torso")
+node_b = NodePath("../left_leg")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="leg/left" unique_id=1066065931]
+position = Vector2(0, 16)
+node_a = NodePath("../left_leg")
+node_b = NodePath("../left_leg2")
+
+[node name="right" type="Node2D" parent="leg" unique_id=1562762178]
+position = Vector2(4.9999995, 48)
+scale = Vector2(0.7, 1)
+
+[node name="right_leg" type="RigidBody2D" parent="leg/right" unique_id=1102573242 node_paths=PackedStringArray("lower_leg")]
+position = Vector2(0, 1)
+collision_layer = 16
+script = ExtResource("2_0xmpi")
+is_right_leg = true
+lower_leg = NodePath("../right_leg2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="leg/right/right_leg" unique_id=1247179349]
+position = Vector2(0, -1.4305115e-06)
+scale = Vector2(1, 0.4618724)
+mesh = SubResource("CapsuleMesh_0udnx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leg/right/right_leg" unique_id=1075712172]
+shape = SubResource("CapsuleShape2D_2uf65")
+
+[node name="right_leg2" type="RigidBody2D" parent="leg/right" unique_id=1015392964]
+position = Vector2(6.8119596e-07, 27)
+collision_layer = 32
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="leg/right/right_leg2" unique_id=294673699]
+position = Vector2(0, -1.4305115e-06)
+scale = Vector2(1, 0.4618724)
+mesh = SubResource("CapsuleMesh_0udnx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leg/right/right_leg2" unique_id=1805293760]
+shape = SubResource("CapsuleShape2D_2uf65")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="leg/right" unique_id=598503159]
+position = Vector2(0, -14)
+node_a = NodePath("../../../torso")
+node_b = NodePath("../right_leg")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="leg/right" unique_id=1041403470]
+position = Vector2(0, 16)
+node_a = NodePath("../right_leg")
+node_b = NodePath("../right_leg2")

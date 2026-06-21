@@ -1,0 +1,265 @@
+[gd_scene format=3 uid="uid://ta4mq2vxxq8b"]
+
+[ext_resource type="PackedScene" uid="uid://d3fcvwxsuj38o" path="res://addons/Ragdoll_Human_Being/Player.tscn" id="1_65jyk"]
+[ext_resource type="PackedScene" uid="uid://ci55f0hyeb5jf" path="res://addons/Ragdoll_Human_Being/Human.tscn" id="2_upstx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uj04i"]
+size = Vector3(11.455, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj04i"]
+size = Vector2(963, 52)
+
+[sub_resource type="Animation" id="Animation_o783d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.2617994]
+}
+
+[sub_resource type="Animation" id="Animation_781el"]
+resource_name = "anim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.2617994, 0.0, 0.2617994, 0.0, -0.2617994]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ugkcs"]
+_data = {
+&"RESET": SubResource("Animation_o783d"),
+&"anim": SubResource("Animation_781el")
+}
+
+[sub_resource type="Animation" id="Animation_1g8fp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lkf25"]
+resource_name = "anim"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -1.5707964, -3.1415927]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7v33x"]
+_data = {
+&"RESET": SubResource("Animation_1g8fp"),
+&"anim": SubResource("Animation_lkf25")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4mcd"]
+size = Vector2(725, 52)
+
+[node name="Test" type="Node2D" unique_id=1925307071]
+
+[node name="floor" type="StaticBody2D" parent="." unique_id=1064179740]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(482, 625)
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor" unique_id=24706714]
+scale = Vector2(84.1554, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor" unique_id=2098818946]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="floor2" type="StaticBody2D" parent="." unique_id=437074360]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1051, 547)
+rotation = -0.2617994
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor2" unique_id=257051978]
+scale = Vector2(84.1554, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor2" unique_id=1514742786]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="floor3" type="StaticBody2D" parent="." unique_id=1450306926]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1646, 468)
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor3" unique_id=2072981982]
+scale = Vector2(84.1554, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor3" unique_id=453681921]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="floor4" type="StaticBody2D" parent="." unique_id=718890921]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2268.0002, 505)
+rotation = -0.2617994
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor4" unique_id=32859792]
+scale = Vector2(84.1554, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor4" unique_id=1153914874]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="floor4" unique_id=1780240036]
+libraries/ = SubResource("AnimationLibrary_ugkcs")
+autoplay = &"anim"
+
+[node name="floor5" type="StaticBody2D" parent="." unique_id=1183558747]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2861, 468)
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor5" unique_id=1405947089]
+scale = Vector2(84.1554, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor5" unique_id=1543186670]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="floor6" type="StaticBody2D" parent="." unique_id=749584582]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(3496, 451)
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor6" unique_id=1879429201]
+scale = Vector2(84.1554, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor6" unique_id=1288285978]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="floor6" unique_id=1261417598]
+libraries/ = SubResource("AnimationLibrary_7v33x")
+autoplay = &"anim"
+
+[node name="floor7" type="StaticBody2D" parent="." unique_id=1320666720]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(4114, 451)
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor7" unique_id=461797611]
+scale = Vector2(84.1554, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor7" unique_id=486670325]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="floor8" type="StaticBody2D" parent="." unique_id=1049982449]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(3499, 939)
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor8" unique_id=775419229]
+scale = Vector2(84.1554, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor8" unique_id=1979404171]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="floor9" type="StaticBody2D" parent="." unique_id=1510482032]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(4114, 939)
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor9" unique_id=1686126961]
+scale = Vector2(84.1554, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor9" unique_id=1215446616]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="floor10" type="StaticBody2D" parent="." unique_id=1264243477]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(4405, 626)
+rotation = -1.5707964
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor10" unique_id=1465623271]
+position = Vector2(-119.177765, 0)
+scale = Vector2(63.347412, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor10" unique_id=629814119]
+position = Vector2(-118.5, 0)
+shape = SubResource("RectangleShape2D_h4mcd")
+
+[node name="floor11" type="StaticBody2D" parent="." unique_id=429398411]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-135, 625)
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor11" unique_id=1190809682]
+scale = Vector2(84.1554, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor11" unique_id=1556377862]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="floor12" type="StaticBody2D" parent="." unique_id=28532440]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2955, 939)
+scale = Vector2(0.64, 0.64)
+
+[node name="Mesh" type="MeshInstance2D" parent="floor12" unique_id=1156709875]
+scale = Vector2(84.1554, 51.750004)
+mesh = SubResource("BoxMesh_uj04i")
+
+[node name="Collision" type="CollisionShape2D" parent="floor12" unique_id=1929135635]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="Player" parent="." unique_id=1487471039 instance=ExtResource("1_65jyk")]
+modulate = Color(1, 0, 0, 1)
+
+[node name="Human" parent="." unique_id=2134392656 instance=ExtResource("2_upstx")]
+modulate = Color(1, 0.51666665, 0, 1)
+position = Vector2(-168, 0)
